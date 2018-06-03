@@ -18,14 +18,12 @@ def get_page(url):
         html = urlopen(url)
     except HTTPError:
         sys.exit("Can't load the page: \n{}".format(url))
-        # return None
 
     bs_obj = BeautifulSoup(html, "html.parser")
     try:
         bs_obj.h2
     except AttributeError:
         sys.exit("Can't load the page: \n{}".format(url))
-        # return None
 
     return bs_obj
 
@@ -120,7 +118,7 @@ if __name__ == "__main__":
 
     else:
         last_page = re.sub(r'^\?.*&pid=', '', last_page.attrs['href'])
-        print("There's {} pages, ~{} files. "
+        print("There are {} pages, ~{} files. "
               .format(int(last_page) / 40, last_page))
 
         pages = 0
